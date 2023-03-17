@@ -6,12 +6,12 @@ library(shiny)
 game_data <- read.csv("2023_game_data.csv") %>%
   select(TEAM, KENPOM.ADJUSTED.EFFICIENCY,
          BARTTORVIK.ADJUSTED.EFFICIENCY,
-         TURNOVER..,POINTS.PER.POSSESSION.DEFENSE) %>%
+         TURNOVER..,POINTS.PER.POSSESSION.DEFENSE, FREE.THROW..) %>%
   distinct(TEAM, .keep_all = TRUE)
 
 game_data$TOTAL.SCORE <- game_data$KENPOM.ADJUSTED.EFFICIENCY *
 game_data$BARTTORVIK.ADJUSTED.EFFICIENCY *
-game_data$TURNOVER.. / game_data$POINTS.PER.POSSESSION.DEFENSE
+game_data$TURNOVER.. / game_data$POINTS.PER.POSSESSION.DEFENSE * game_data$FREE.THROW..
 
 
 #dynamic shiny
@@ -34,17 +34,34 @@ ui<-fluidPage(
 
 server<-function(input,output){
   
-  #matchup <- reactive({
-  #  game_data(input$team_1, input$team_2)
+  matchup <- reactive({
+    team1 <- game_data[game_data$TEAM == input$team_1, ] 
+    team2 <- game_data[game_data$TEAM == input$team_2, ]
+  })
+  
+  # Display team summaries
+ 
+    
   #})
-  
-  
-  #output$plot_01 <- renderPlot({
-  #  ggplot(game_data, aes(x=team, y=TOTAL.SCORE, fill=Product))+
-   #   geom_col(data = subset(game_data, team == input$team))
 
+    #game_data(input$team_1, input$team_2)
   #})
+  
+  
+  output$plot_01 <- renderPlot({
+    team1 <- game_data[game_data$TEAM == input$team_1, ] 
+    team2 <- game_data[game_data$TEAM == input$team_2, ]
+    matchup <- rbind(team1, team2)
+    ggplot(matchup, aes(x = TOTAL.SCORE, y = TEAM)) + 
+      geom_col() + 
+      xlab("Total Score") + 
+      ylab("Team") + 
+      ggtitle('Matchup Winner')
+  })
+
+  
   output$table <- DT::renderDataTable(game_data[,c("TEAM","TOTAL.SCORE")],options = list(pageLength = 4))
 }
 
 shinyApp(ui=ui, server=server)
+
