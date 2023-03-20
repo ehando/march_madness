@@ -69,7 +69,7 @@ server<-function(input,output){
 
   output$plot_02 <- renderPlot({
     ggplot(game_data, aes(x = TEAM, y = TOTAL.SCORE)) +
-      geom_bar(stat = "identity", fill = "steelblue") +
+      geom_col(fill = "steelblue") +
       xlab("Team") +
       ylab("Total Score") +
       ggtitle("Total Score by Team")
