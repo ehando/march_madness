@@ -13,6 +13,11 @@ game_data$TOTAL.SCORE <- game_data$KENPOM.ADJUSTED.EFFICIENCY *
 game_data$BARTTORVIK.ADJUSTED.EFFICIENCY *
 game_data$TURNOVER.. / game_data$POINTS.PER.POSSESSION.DEFENSE * game_data$FREE.THROW..
 
+game_data <- game_data %>%
+  mutate(TOTAL.SCORE = round(TOTAL.SCORE,4))
+
+game_data <- game_data[order(-game_data$TOTAL.SCORE),]
+
 
 #dynamic shiny
 ui<-fluidPage( 
@@ -56,11 +61,12 @@ server<-function(input,output){
     team1 <- game_data[game_data$TEAM == input$team_1, ] 
     team2 <- game_data[game_data$TEAM == input$team_2, ]
     matchup <- rbind(team1, team2)
-    ggplot(matchup, aes(x = TOTAL.SCORE, y = TEAM)) + 
+    ggplot(matchup, aes(x = TOTAL.SCORE, y = TEAM, fill = TOTAL.SCORE)) + 
       geom_col() + 
       xlab("Total Score") + 
       ylab("Team") + 
-      ggtitle('Matchup Winner')
+      ggtitle('Matchup Winner') +
+      guides(fill = FALSE)
   })
 
   
@@ -77,4 +83,3 @@ server<-function(input,output){
 
 }
   shinyApp(ui=ui, server=server)
-
