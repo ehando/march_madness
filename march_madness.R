@@ -36,7 +36,6 @@ ui<-fluidPage(
     column(3.5,DT::dataTableOutput("table", width = "100%")),
     
       column(12, plotOutput('plot_02', width = '5000px'))
-    
   )
 )
 
@@ -56,7 +55,6 @@ server<-function(input,output){
     #game_data(input$team_1, input$team_2)
   #})
   
-  
   output$plot_01 <- renderPlot({
     team1 <- game_data[game_data$TEAM == input$team_1, ] 
     team2 <- game_data[game_data$TEAM == input$team_2, ]
@@ -69,13 +67,12 @@ server<-function(input,output){
       guides(fill = FALSE)
   })
 
-  
   output$table <- DT::renderDataTable(game_data[,c("TEAM","TOTAL.SCORE")],options = list(pageLength = 4))
 
 
   output$plot_02 <- renderPlot({
     ggplot(game_data, aes(x = TEAM, y = TOTAL.SCORE)) +
-      geom_col(fill = "steelblue") +
+      geom_point(fill = "steelblue") +
       xlab("Team") +
       ylab("Total Score") +
       ggtitle("Total Score by Team")
@@ -83,3 +80,5 @@ server<-function(input,output){
 
 }
   shinyApp(ui=ui, server=server)
+
+  
