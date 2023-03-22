@@ -4,7 +4,10 @@
 Eirik Andersen, Jason Donohue, Rebecca Moges
 
 ## Introduction
-we will analyze
+
+In this project, we use various metrics to predict the winners of the NCAA Men's Basketball Tournament, also known as March Madness. Our goal is to accurately predict which teams are most likely to win each game and ultimately become the tournament champion.
+
+To achieve this goal, we have collected and analyzed a large amount of data on college basketball teams, including their past performance, key player statistics, and various team metrics such as offensive and defensive efficiency.
 
  ## Data Dictionary
  
