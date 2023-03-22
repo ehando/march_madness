@@ -18,8 +18,9 @@ we will analyze
  
  Turnover Rate: Is a measure of a teams ability to protect the ball and avoid turnovers. It is calculated as the percentage of a team's possessions that result in a turnover. Lower turnover rates indicate better ball security, while higher rates indicate a higher likelihood of giving up possession.
  
- Barttorvik Adjusted Efficiency: Adjusted efficiency is a measure of a team's overall offensive and defensive performance that takes into account the quality of their opponents. Higher adjusted efficiency values indicate that a team is able to score more points per possession than their opponents, while lower values indicate a less efficient performance.
+ Barttorvik Adjusted Efficiency: Is a measure of a team's overall offensive and defensive performance that takes into account the quality of their opponents. Higher adjusted efficiency values indicate that a team is able to score more points per possession than their opponents, while lower values indicate a less efficient performance.
 
+KENPOM Adjusted Efficiency: Is a statistical measure used in college basketball to evaluate a team's offensive and defensive performance. It takes into account factors such as the strength of a team's opponents, the location of the game, and the pace of play
 
  
  
