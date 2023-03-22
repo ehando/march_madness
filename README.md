@@ -1,9 +1,9 @@
-# march_madness : basketball
+# march_madness 🏀
 
-# contributors
+# Contributors
 Eirik Andersen, Jason Donohue, Rebecca Moges
 
-## Introduction
+## Introduction 
 
 In this project, we use various metrics to predict the winners of the NCAA Men's Basketball Tournament, also known as March Madness. Our goal is to accurately predict which teams are most likely to win each game and ultimately become the tournament champion.
 
