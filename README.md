@@ -1,4 +1,4 @@
-# march_madness :basketball
+# march_madness : basketball
 
 # contributors
 Eirik Andersen, Jason Donohue, Rebecca Moges
