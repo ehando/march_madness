@@ -1,4 +1,11 @@
 # march_madness
+
+# contributors
+Eirik Andersen, Jason Donohue, Rebecca Moges
+
+## Introduction
+we will analyze
+
  ## Data Dictionary
  
  Team Statistics Data: This dataset contains various statistics for each team, including win-loss record, points per game, rebounds per game, field goal percentage, three-point percentage, and free throw percentage
