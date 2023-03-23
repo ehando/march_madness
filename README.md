@@ -25,5 +25,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
 
 7. KENPOM Adjusted Efficiency: Is a statistical measure used in college basketball to evaluate a team's offensive and defensive performance. It takes into account factors such as the strength of a team's opponents, the location of the game, and the pace of play
 
+## Data Cleaning 
+
  
  
