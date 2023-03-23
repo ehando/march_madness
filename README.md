@@ -26,12 +26,6 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
 7. KENPOM Adjusted Efficiency: Is a statistical measure used in college basketball to evaluate a team's offensive and defensive performance. It takes into account factors such as the strength of a team's opponents, the location of the game, and the pace of play
 
 ## Data Cleaning 
-* manipulated data to get specific variables of interest to be included in the data frame
-* 
-game_data <- read.csv("2023_game_data.csv") %>%
-  select(TEAM, KENPOM.ADJUSTED.EFFICIENCY,
-         BARTTORVIK.ADJUSTED.EFFICIENCY,
-         TURNOVER..,POINTS.PER.POSSESSION.DEFENSE, FREE.THROW..) %>%
-  distinct(TEAM, .keep_all = TRUE)
- 
+* Manipulated data to get specific variables of interest to be included in the data frame
+
  
