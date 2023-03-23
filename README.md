@@ -27,9 +27,9 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
 ## Data Cleaning 
 * Manipulated data to get specific variables of interest to be included in the data frame
 
-'game_data <- read.csv("2023_game_data.csv") %>%
+'code' game_data <- read.csv("2023_game_data.csv") %>%
   select(TEAM, KENPOM.ADJUSTED.EFFICIENCY,
          BARTTORVIK.ADJUSTED.EFFICIENCY,
          TURNOVER..,POINTS.PER.POSSESSION.DEFENSE, FREE.THROW..) %>%
-  distinct(TEAM, .keep_all = TRUE)'
+  distinct(TEAM, .keep_all = TRUE)
  
