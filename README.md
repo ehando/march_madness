@@ -19,12 +19,11 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
  
 4. Historical Tournament Data: This dataset contains information on past March Madness tournaments, including the teams that participated, their seeding, and their performance in the tournament.
  
-5. Turnover Rate: Is a measure of a teams ability to protect the ball and avoid turnovers. It is calculated as the percentage of a team's possessions that result in a turnover. Lower turnover rates indicate better ball security, while higher rates indicate a higher likelihood of giving up possession.
+5. Turnover Rate: Is a measure of a teams ability to protect the ball and avoid turnovers. 
  
-6. Barttorvik Adjusted Efficiency: Is a measure of a team's overall offensive and defensive performance that takes into account the quality of their opponents. Higher adjusted efficiency values indicate that a team is able to score more points per possession than their opponents, while lower values indicate a less efficient performance.
+6. Barttorvik Adjusted Efficiency: Is a measure of a team's overall offensive and defensive performance. 
 
-7. KENPOM Adjusted Efficiency: Is a statistical measure used in college basketball to evaluate a team's offensive and defensive performance. It takes into account factors such as the strength of a team's opponents, the location of the game, and the pace of play
-
+7. KENPOM Adjusted Efficiency: Is a statistical measure used in college basketball to evaluate a team's offensive and defensive performance. 
 ## Data Cleaning 
 * Manipulated data to get specific variables of interest to be included in the data frame
 
