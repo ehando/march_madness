@@ -51,6 +51,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
       ggtitle('Matchup Winner') +
       guides(fill = FALSE)
   })```
+
 ---
 
 2. 
@@ -61,6 +62,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
       ylab("Total Score") +
       ggtitle("Total Score by Team")
 })```
+
 ---
 
 3. 
