@@ -11,7 +11,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
 
  ## Data Dictionary
  
- 1. Game Data: This dataset contains information on each game in the March Madness tournament, including the teams playing, the date and time of the game, the location, and the final score.
+ 1.Tournament Data: This dataset contains information on past March Madness tournaments, including the teams that participated, their seeding, and their performance in the tournament.
  
 ## Data Cleaning 
 * Manipulated data to get specific variables of interest to be included in the data frame
