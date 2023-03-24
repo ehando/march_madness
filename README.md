@@ -21,6 +21,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
          BARTTORVIK.ADJUSTED.EFFICIENCY,
          TURNOVER..,POINTS.PER.POSSESSION.DEFENSE, FREE.THROW..) %>%
   distinct(TEAM, .keep_all = TRUE) `
+---
 
 
   
