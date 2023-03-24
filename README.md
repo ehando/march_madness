@@ -38,7 +38,8 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
 ![464FFE85-314C-41D8-8AAE-210794CA2BFD](https://user-images.githubusercontent.com/113206712/227397176-694e5d85-4199-4ab9-8ab8-547246f0eabf.jpeg)
 
 
- 1.
+ 1. we used the ggplot function to visualize a hypothetical match up between team 1 and team 2
+ 
  ``` output$plot_01 <- renderPlot({
     team1 <- game_data[game_data$TEAM == input$team_1, ] 
     team2 <- game_data[game_data$TEAM == input$team_2, ]
@@ -50,6 +51,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
       ggtitle('Matchup Winner') +
       guides(fill = FALSE)
   })```
+---
 
 2. 
 ```  output$plot_02 <- renderPlot({
@@ -59,6 +61,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
       ylab("Total Score") +
       ggtitle("Total Score by Team")
 })```
+---
 
 3. 
 ```ui<-fluidPage( 
