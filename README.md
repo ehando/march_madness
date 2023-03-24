@@ -20,7 +20,7 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
   select(TEAM, KENPOM.ADJUSTED.EFFICIENCY,
          BARTTORVIK.ADJUSTED.EFFICIENCY,
          TURNOVER..,POINTS.PER.POSSESSION.DEFENSE, FREE.THROW..) %>%
-  distinct(TEAM, .keep_all = TRUE)```
+  distinct(TEAM, .keep_all = TRUE) ```
 
 
   
