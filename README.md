@@ -50,3 +50,32 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
       ggtitle('Matchup Winner') +
       guides(fill = FALSE)
   })```
+
+2. 
+```  output$plot_02 <- renderPlot({
+    ggplot(game_data, aes(x = TEAM, y = TOTAL.SCORE)) +
+      geom_point(fill = "steelblue") +
+      xlab("Team") +
+      ylab("Total Score") +
+      ggtitle("Total Score by Team")
+})```
+
+3. 
+```ui<-fluidPage( 
+  
+  titlePanel(title = "March Madness 2023"),
+  h4('Matchup winner'),
+  
+  fluidRow(
+    column(2,
+           selectInput('team_1', 'Choose Team 1', game_data$TEAM)),
+    column(2,
+             selectInput('team_2', 'Choose Team 2', game_data$TEAM)),
+    
+    column(4,plotOutput('plot_01', width = '700px')),
+    
+    column(3.5,DT::dataTableOutput("table", width = "100%")),
+    
+      column(12, plotOutput('plot_02', width = '5000px'))
+  )
+)```
