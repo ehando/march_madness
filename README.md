@@ -39,7 +39,8 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
 
 ![6BD4E838-7B63-42F4-A4B4-46929FFADB55_4_5005_c](https://user-images.githubusercontent.com/113206712/227397128-6ed55970-3489-42c0-a863-b1070fb40c7d.jpeg)
 
- 2.
+
+2.
   
  ``` output$plot_01 <- renderPlot({
     team1 <- game_data[game_data$TEAM == input$team_1, ] 
@@ -50,30 +51,33 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
       xlab("Total Score") + 
       ylab("Team") + 
       ggtitle('Matchup Winner') +
-      guides(fill = FALSE)
+      guides(fill = "none")
+    
   })
   ```
-3.
-```  output$plot_02 <- renderPlot({
-    ggplot(game_data, aes(x = TEAM, y = TOTAL.SCORE)) +
-      geom_point(fill = "steelblue") +
-      xlab("Team") +
-      ylab("Total Score") +
-      ggtitle("Total Score by Team")
-})
+  ![40B79C8D-31C0-4E2B-AD2E-BEA4410FB03E](https://user-images.githubusercontent.com/113206712/227397136-34b78fe2-e2a1-4011-938d-e2f90f7f0343.jpeg)
+
+3. 
+
+``` 
+output$table <- DT::renderDataTable(game_data[,c("TEAM","TOTAL.SCORE")],options = list(pageLength = 4))
 ```
 
-![40B79C8D-31C0-4E2B-AD2E-BEA4410FB03E](https://user-images.githubusercontent.com/113206712/227397136-34b78fe2-e2a1-4011-938d-e2f90f7f0343.jpeg)
-
+})
 
 ![3DCB5042-61B1-40C0-BAB1-1FA36EFF6572](https://user-images.githubusercontent.com/113206712/227397153-37f2d5af-a6bf-4495-a3a5-220f5312901d.jpeg)
 
+4. 
 
+```  output$plot_02 <- renderPlot({
+    ggplot(game_data, aes(x = TEAM, y = TOTAL.SCORE)) +
+      geom_col(fill = "steelblue") +
+      xlab("Team") +
+      ylab("Total Score") +
+      ggtitle("Total Score by Team")
+```
+      
 ![464FFE85-314C-41D8-8AAE-210794CA2BFD](https://user-images.githubusercontent.com/113206712/227397176-694e5d85-4199-4ab9-8ab8-547246f0eabf.jpeg)
-
-
-
----
 
 
 
