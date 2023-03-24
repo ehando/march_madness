@@ -40,13 +40,14 @@ To achieve this goal, we have collected and analyzed a large amount of data on c
 
  1. we used the ggplot function to visualize a hypothetical match up between team 1 and team 2
 
-```fluidRow(
+``` fluidRow(
     column(2,
            selectInput('team_1', 'Choose Team 1', game_data$TEAM)),
     column(2,
              selectInput('team_2', 'Choose Team 2', game_data$TEAM)),```
   
   2.
+  
  ``` output$plot_01 <- renderPlot({
     team1 <- game_data[game_data$TEAM == input$team_1, ] 
     team2 <- game_data[game_data$TEAM == input$team_2, ]
