@@ -107,3 +107,101 @@ output$table <- DT::renderDataTable(game_data[,c("TEAM","TOTAL.SCORE")],options 
 ![464FFE85-314C-41D8-8AAE-210794CA2BFD](https://user-images.githubusercontent.com/113206712/227397176-694e5d85-4199-4ab9-8ab8-547246f0eabf.jpeg)
 
 ---
+
+## Model
+
+We didn't get the model to work 100%, so it's not in the R file but here is the code
+
+```
+teams <- game_data
+
+# Seeding the teams based on their scores
+teams_seeded <- teams %>%
+  arrange(desc(TOTAL.SCORE)) %>%
+  mutate(seed = row_number())
+
+# Adding a "bye" team if the number of teams is not a power of two
+if (nrow(teams_seeded) %% 2 != 0) {
+  teams_seeded <- rbind(teams_seeded, data.frame(TEAM = "Bye", TOTAL.SCORE = 0, seed = nrow(teams_seeded) + 1))
+}
+
+# Creating the bracket data
+round_1 <- data.frame(
+  round = 1,
+  match = 1:(nrow(teams_seeded)%%32),
+  team1 = teams_seeded$TEAM[1:(nrow(teams_seeded)%%32)],
+  team2 = teams_seeded$TEAM[((nrow(teams_seeded)%%32) + 1):nrow(teams_seeded)]
+)
+
+round_2 <- data.frame(
+  round = 2,
+  match = 1:(nrow(round_1)/2),
+  team1 = ifelse(round_1$match %% 2 == 1, round_1$team1, round_1$team2),
+  team2 = ifelse(round_1$match %% 2 == 1, round_1$team2, round_1$team1)
+)
+
+round_3 <- data.frame(
+  round = 3,
+  match = 1:(nrow(round_2)/2),
+  team1 = ifelse(round_2$match %% 2 == 1, round_2$team1, round_2$team2),
+  team2 = ifelse(round_2$match %% 2 == 1, round_2$team2, round_2$team1)
+)
+
+round_4 <- data.frame(
+  round = 4,
+  match = 1:(nrow(round_3)/2),
+  team1 = ifelse(round_3$match %% 2 == 1, round_3$team1, round_3$team2),
+  team2 = ifelse(round_3$match %% 2 == 1, round_3$team2, round_3$team1)
+)
+
+round_5 <- data.frame(
+  round = 5,
+  match = 1:(nrow(round_4)/2),
+  team1 = ifelse(round_4$match %% 2 == 1, round_4$team1, round_4$team2),
+  team2 = ifelse(round_4$match %% 2 == 1, round_4$team2, round_4$team1)
+)
+
+championship <- data.frame(
+  round = 6,
+  match = 1,
+  team1 = ifelse(round_5$match %% 2 == 1, round_5$team1, round_5$team2),
+  team2 = ifelse(round_5$match %% 2 == 1, round_5$team2, round_5$team1)
+)
+
+# Combine all the rounds into one dataframe
+bracket_data <- bind_rows(round_1, round_2, round_3, round_4, round_5, championship)
+
+# Create a function to generate the tournament results table
+table_results <- function(bracket_data) {
+  # Filter the data to only include the final results
+  results <- bracket_data %>%
+    filter(round == max(round))
+  
+  if (nrow(results) == 0) {
+    return(NULL) # return NULL if no rows match the filtering criteria
+  }
+  
+  # Create a new data frame to hold the results
+  winners <- data.frame(
+    seed = 1:nrow(results),
+    team = ifelse(results$score1 > results$score2, results$team1, results$team2)
+  )
+  
+  # Order the results by seed
+  winners <- winners %>%
+    arrange(seed)
+  
+  # Create a flextable with the results
+  ft <- flextable(winners)
+  
+  # Format the table
+  ft <- ft %>% 
+    set_header_labels("", "Winner") %>% 
+    align(align = "center", part = "all") %>% 
+    width(width = 1, part = "1") %>% 
+    bold(part = "header")
+  
+  # Return the table
+  return(ft)
+}
+```
