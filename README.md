@@ -96,7 +96,7 @@ fluidRow(
 ---
 
 3. Added a table sorted by score so the user can find teams and try them in the matchup
-- We chose to create a table to see the overall winner compared to every other team. This is why we sorted by the highest final score to the lowest. 
+- We chose to create a table to see the overall winner compared to every other team. This is why we sorted by the highest final score to the lowest. The table also allows the user to see which teams they can select for the matchup.
 
 ``` 
 output$table <- DT::renderDataTable(game_data[,c("TEAM","TOTAL.SCORE")],options = list(pageLength = 4))
