@@ -7,14 +7,22 @@ Eirik Andersen, Jason Donohue, Rebecca Moges
 
 In this project, we use various metrics to predict the winners of the NCAA Men's Basketball Tournament, also known as March Madness. Our goal is to accurately predict which teams are most likely to win each game and ultimately become the tournament champion.
 
-To achieve this goal, we have collected and analyzed a large amount of data on college basketball teams, including their past performance, key player statistics, and various team metrics such as offensive and defensive efficiency.
+To achieve this goal, we have collected and analyzed a large amount of data on college basketball teams, key player statistics, and various team metrics such as offensive and defensive efficiency.
 
 ## Data Dictionary
  
  1.Tournament Data: This dataset contains the teams and their stats for the 2023 season, including their conference tournament.
  
 ## Data Cleaning 
-* Manipulated data to get specific variables of interest to be included in the data frame
+* Manipulated data to get specific variables of interest to be included in the data frame. Below is varriables that we used
+1. Team
+2. KENPOM.ADJUSTED.EFFICIENCY 
+3. BARTTORVIK.ADJUSTED.EFFICIENCY
+4. TURNOVER..
+5. POINTS.PER.POSSESSION.DEFENSE
+6. FREE.THROW.. 
+
+
 
 ```
 game_data <- read.csv("2023_game_data.csv") %>%
@@ -27,7 +35,7 @@ game_data <- read.csv("2023_game_data.csv") %>%
 
 ## Data Prep
 
-1. Created a TOTAL.SCORE column using key stats
+1. Created a TOTAL.SCORE column using the key stats from the cleaned data
 
 ```
 game_data$TOTAL.SCORE <- game_data$KENPOM.ADJUSTED.EFFICIENCY *
@@ -54,6 +62,7 @@ game_data <- game_data[order(-game_data$TOTAL.SCORE),]
 ## Data Analysis
  
  1. We let the user select two teams for a matchup
+ - We did this so we could create a graph that reacts off of the users selections
 
 ```
 fluidRow(
@@ -67,6 +76,8 @@ fluidRow(
 ---
 
 2. We used the ggplot function to visualize a hypothetical match up between team 1 and team 2
+- We choose a bar graph to easily see the difference in the total score between the 2 selected teams
+
   
  ``` 
     output$plot_01 <- renderPlot({
@@ -85,6 +96,7 @@ fluidRow(
 ---
 
 3. Added a table sorted by score so the user can find teams and try them in the matchup
+- We chose to create a table to see the overall winner compared to every other team. This is why we sorted by the highest final score to the lowest. 
 
 ``` 
 output$table <- DT::renderDataTable(game_data[,c("TEAM","TOTAL.SCORE")],options = list(pageLength = 4))
@@ -94,6 +106,7 @@ output$table <- DT::renderDataTable(game_data[,c("TEAM","TOTAL.SCORE")],options 
 ---
 
 4. Chart showing all teams' scores (image only partial, all teams shown in shinyapp)
+- We chose to create a bar graph of all the teams total scores to easily see every team compared to the table above. Both images show every teams total score but the bar grapgh makes it easier to see every teams score comapred to the overal winner in the table. 
 
 ```  
     output$plot_02 <- renderPlot({
